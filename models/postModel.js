@@ -25,7 +25,7 @@ const postSchema = new mongoose.Schema({
     type: Number,
     default: 0,
   },
-  avtar: {
+  avatar: {
     public_id: {
       type: String,
       required: true,
@@ -45,6 +45,27 @@ const postSchema = new mongoose.Schema({
       required: true,
     },
   },
+  comments: [
+    {
+      user: {
+        type: mongoose.Schema.ObjectId,
+        ref: "User",
+        required: true,
+      },
+      name: {
+        type: String,
+        required: true,
+      },
+      avatar: {
+        type: String,
+        required: true,
+      },
+      comment: {
+        type: String,
+        required: true,
+      },
+    },
+  ],
   createdAt: {
     type: Date,
     default: Date.now,
