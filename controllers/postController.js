@@ -90,7 +90,6 @@ exports.getAllPost = catchAsyncError(async (req, res, next) => {
 });
 
 exports.getSinglePost = catchAsyncError(async (req, res, next) => {
-  console.log(req.params.id);
   const post = await Post.findById(req.params.id);
 
   res.status(200).json({ success: true, post });
@@ -98,7 +97,6 @@ exports.getSinglePost = catchAsyncError(async (req, res, next) => {
 
 //UPDATE A POST::
 exports.updatePost = catchAsyncError(async (req, res) => {
-
   const post = await Post.findByIdAndUpdate(req.params.id, req.body, {
     new: true,
   });
@@ -116,9 +114,7 @@ exports.deletePost = catchAsyncError(async (req, res, next) => {
 //Comment a post:
 
 exports.commentPost = catchAsyncError(async (req, res, next) => {
-  console.log(req.body);
-
-  const { comment, postId } = req.body;
+  const { comment } = req.body;
 
   const review = {
     user: req.user.id,
@@ -127,7 +123,7 @@ exports.commentPost = catchAsyncError(async (req, res, next) => {
     comment,
   };
 
-  const post = await Post.findById(postId);
+  const post = await Post.findById(req.params.id);
 
   const isReviewed = post.comments.find(
     (rev) => rev.user.toString() === req.user._id.toString()

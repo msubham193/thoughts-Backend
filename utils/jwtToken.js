@@ -1,7 +1,7 @@
 exports.sendToken = (user, statusCode, res, userPost) => {
   const token = user.getJWTToken();
 
-  // console.log(token);
+  console.log(token);
 
   console.log(process.env.COOKIE_EXPIRE);
 

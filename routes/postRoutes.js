@@ -19,7 +19,7 @@ router.get("/titles", getAllTitle);
 router.get("/all", getAllPost);
 router.get("/:id", getSinglePost);
 router.put("/like/:id", isAuthenticatedUser, likePost);
-router.put("/comment", isAuthenticatedUser, commentPost);
+router.put("/comment/:id", isAuthenticatedUser, commentPost);
 router.put("/update/:id", isAuthenticatedUser, updatePost);
 router.delete("/:id", isAuthenticatedUser, deletePost);
 router.put("/bookmark/:id", isAuthenticatedUser, bookMarkPost);

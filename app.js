@@ -12,7 +12,7 @@ const fileUpload = require("express-fileupload");
 const app = express();
 
 const corsOptions = {
-  origin: "https://chimerical-muffin-7aac94.netlify.app",
+  origin: "https://luminous-churros-3545c8.netlify.app",
   credentials: true, //access-control-allow-credentials:true
   optionSuccessStatus: 200,
 };
@@ -32,9 +32,10 @@ app.use(error);
 
 dotenv.config();
 
+const PORT = process.env.PORT || 8080;
 const connectServer = () => {
   dbConnect(process.env.MONGO_URL);
-  app.listen(process.env.PORT, () => {
+  app.listen(PORT, () => {
     console.log("connected to server on port " + process.env.PORT);
   });
 };
