@@ -17,6 +17,19 @@ class ApiFeatures {
     this.query = this.query.find({ ...keyword });
     return this;
   }
+  searchByCategory() {
+    const keyword = this.queryStr.type
+      ? {
+          category: {
+            $regex: this.queryStr.type,
+            $options: "i",
+          },
+        }
+      : {};
+
+    this.query = this.query.find({ ...keyword });
+    return this;
+  }
 }
 
 module.exports = ApiFeatures;

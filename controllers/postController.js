@@ -79,7 +79,9 @@ exports.getAllTitle = catchAsyncError(async (req, res, next) => {
 
 exports.getAllPost = catchAsyncError(async (req, res, next) => {
   // const posts = await Post.find();
-  const apiFeature = new ApiFeatures(Post.find(), req.query).search();
+  const apiFeature = new ApiFeatures(Post.find(), req.query)
+    .search()
+    .searchByCategory();
 
   const posts = await apiFeature.query;
   const postsCnt = posts.length;
@@ -95,8 +97,8 @@ exports.getSinglePost = catchAsyncError(async (req, res, next) => {
 });
 
 //UPDATE A POST::
-
 exports.updatePost = catchAsyncError(async (req, res) => {
+
   const post = await Post.findByIdAndUpdate(req.params.id, req.body, {
     new: true,
   });
