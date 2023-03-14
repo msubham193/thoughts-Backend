@@ -12,7 +12,7 @@ const fileUpload = require("express-fileupload");
 const app = express();
 
 const corsOptions = {
-  origin: "https://luminous-churros-3545c8.netlify.app",
+  origin: "https://dreamy-sprite-bad234.netlify.app",
   credentials: true, //access-control-allow-credentials:true
   optionSuccessStatus: 200,
 };
